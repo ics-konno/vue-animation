@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <button @click="addNumber">toggle</button>
-    <transition-group>
+    <transition-group tag="div">
       <span v-for="number in numbers" :key="number">
         {{ number }}
       </span>
@@ -36,5 +36,13 @@ export default {
 }
 .v-enter, .v-leave-to  /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
+}
+
+.v-move {
+  transition: transform .5s;
+}
+span{
+  display: inline-block;
+  margin-right: 10px;
 }
 </style>
