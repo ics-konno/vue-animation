@@ -25,11 +25,17 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.v-enter-active, .v-leave-active {
-  transition: opacity .5s;
+.v-enter-active {
+  transition: opacity 0.5s;
 }
-.v-enter, .v-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  transition: opacity .5s;
+.v-leave-active {
+  transition: all 1.5s;
+}
+.v-enter  /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
+}
+.v-leave-to {
+  opacity: 0;
+  transform: translateX(20px);
 }
 </style>
