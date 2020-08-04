@@ -1,10 +1,11 @@
 <template>
   <div class="hello">
-    <button @click="toggleShow">toggle</button>
-    <transition name="one" mode="out-in">
-      <p v-if="isShown" key="one">アニメーション</p>
-      <p v-else key="two">animation</p>
-    </transition>
+    <button @click="addNumber">toggle</button>
+    <transition-group>
+      <span v-for="number in numbers" :key="number">
+        {{ number }}
+      </span>
+    </transition-group>
   </div>
 </template>
 
@@ -13,12 +14,15 @@ export default {
   name: "HelloWorld",
   data() {
     return {
-      isShown: false
+      isShown: false,
+      numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+      nextNum: 10
     };
   },
   methods: {
-    toggleShow() {
-      this.isShown = !this.isShown;
+    addNumber() {
+      this.numbers.splice(0, 0, this.nextNum);
+      this.nextNum++;
     }
   }
 };
@@ -26,17 +30,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.one-enter-active {
+.v-enter-active,
+.v-leave-active {
   transition: opacity 0.5s;
 }
-.one-leave-active {
-  transition: all 1.5s;
-}
-.one-enter  /* .fade-leave-active below version 2.1.8 */ {
+.v-enter, .v-leave-to  /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
-}
-.one-leave-to {
-  opacity: 0;
-  transform: translateX(20px);
 }
 </style>
