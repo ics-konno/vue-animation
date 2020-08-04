@@ -1,11 +1,9 @@
 <template>
   <div class="hello">
     <button @click="toggleShow">toggle</button>
-    <transition name="one">
-      <p v-show="isShown">アニメーション１</p>
-    </transition>
-    <transition name="two">
-      <p v-show="isShown">アニメーション２</p>
+    <transition name="one" mode="out-in">
+      <p v-if="isShown" key="one">アニメーション</p>
+      <p v-else key="two">animation</p>
     </transition>
   </div>
 </template>
@@ -38,20 +36,6 @@ export default {
   opacity: 0;
 }
 .one-leave-to {
-  opacity: 0;
-  transform: translateX(20px);
-}
-
-.two-enter-active {
-  transition: opacity 1.5s;
-}
-.two-leave-active {
-  transition: all 2.5s;
-}
-.two-enter  /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
-.two-leave-to {
   opacity: 0;
   transform: translateX(20px);
 }
