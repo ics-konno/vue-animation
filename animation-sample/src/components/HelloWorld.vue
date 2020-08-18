@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <button @click="toggleShow">toggle</button>
+    <button @click="isShown = !isShown">toggle</button>
     <transition name="one" mode="out-in">
       <p v-if="isShown" key="one">アニメーション</p>
       <p v-else key="two">animation</p>
@@ -16,11 +16,6 @@ export default {
       isShown: false
     };
   },
-  methods: {
-    toggleShow() {
-      this.isShown = !this.isShown;
-    }
-  }
 };
 </script>
 
