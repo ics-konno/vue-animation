@@ -1,10 +1,10 @@
 <template>
   <div class="hello">
     <button @click="addNumber">toggle</button>
-    <transition-group tag="div">
-      <span v-for="number in numbers" :key="number">
+    <transition-group tag="ul">
+      <li v-for="number in numbers" :key="number">
         {{ number }}
-      </span>
+      </li>
     </transition-group>
   </div>
 </template>
@@ -14,15 +14,12 @@ export default {
   name: "HelloWorld",
   data() {
     return {
-      isShown: false,
-      numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-      nextNum: 10
+      numbers: [9, 8, 7, 6, 5, 4, 3, 2, 1],
     };
   },
   methods: {
     addNumber() {
-      this.numbers.splice(0, 0, this.nextNum);
-      this.nextNum++;
+      this.numbers.splice(0, 0, this.numbers[0] + 1);
     }
   }
 };
@@ -34,15 +31,17 @@ export default {
 .v-leave-active {
   transition: opacity 0.5s;
 }
-.v-enter, .v-leave-to  /* .fade-leave-active below version 2.1.8 */ {
+.v-enter, .v-leave-to {
   opacity: 0;
 }
 
-.v-move {
-  transition: transform .5s;
+li {
+  list-style: none;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
 }
-span{
-  display: inline-block;
-  margin-right: 10px;
+
+.v-move {
+  transition: transform 0.5s;
 }
 </style>
